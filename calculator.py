@@ -112,6 +112,7 @@ def main():
                         print(result)
                     else:
                         print(f"Division result: {result}")
+                print()
         except ValueError:
             print("Please enter valid numbers.")
             continue
