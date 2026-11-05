@@ -27,13 +27,22 @@ def squared_root(number):
 
 
 def factorial(number):
-    if number < 0:
+    try:
+        numeric_value = float(number)
+    except (TypeError, ValueError):
+        return "Factorial is only defined for whole numbers."
+
+    if not numeric_value.is_integer():
+        return "Factorial is only defined for whole numbers."
+
+    integer_value = int(numeric_value)
+    if integer_value < 0:
         return "Factorial is not defined for negative numbers."
-    if number == 0:
+    if integer_value == 0:
         return 1
 
     result = 1
-    for value in range(1, int(number) + 1):
+    for value in range(1, integer_value + 1):
         result *= value
     return result
 
@@ -50,9 +59,9 @@ def main():
         print("7. Factorial")
         print("8. Quit")
 
-        choice = input("Choose an operation: ").strip()
+        choice = input("Choose an operation: ").strip().lower()
 
-        if choice in ("8", "quit", "QUIT"):
+        if choice in ("8", "quit"):
             print("Goodbye!")
             break
 
